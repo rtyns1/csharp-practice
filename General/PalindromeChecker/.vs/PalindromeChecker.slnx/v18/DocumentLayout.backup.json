@@ -1,9 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\marty\\source\\repos\\PalindromeChecker\\",
+  "WorkspaceRootPath": "C:\\Users\\marty\\Documents\\C-Sharp practice\\General\\PalindromeChecker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F864046A-2B0A-9812-6E20-B4D846D2015E}|PalindromeChecker\\PalindromeChecker.csproj|c:\\users\\marty\\source\\repos\\palindromechecker\\palindromechecker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F864046A-2B0A-9812-6E20-B4D846D2015E}|PalindromeChecker\\PalindromeChecker.csproj|c:\\users\\marty\\documents\\c-sharp practice\\general\\palindromechecker\\palindromechecker\\palindromechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F864046A-2B0A-9812-6E20-B4D846D2015E}|PalindromeChecker\\PalindromeChecker.csproj|solutionrelative:palindromechecker\\palindromechecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F864046A-2B0A-9812-6E20-B4D846D2015E}|PalindromeChecker\\PalindromeChecker.csproj|c:\\users\\marty\\documents\\c-sharp practice\\general\\palindromechecker\\palindromechecker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F864046A-2B0A-9812-6E20-B4D846D2015E}|PalindromeChecker\\PalindromeChecker.csproj|solutionrelative:palindromechecker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PalindromeChecker.cs",
+              "DocumentMoniker": "C:\\Users\\marty\\Documents\\C-Sharp practice\\General\\PalindromeChecker\\PalindromeChecker\\PalindromeChecker.cs",
+              "RelativeDocumentMoniker": "PalindromeChecker\\PalindromeChecker.cs",
+              "ToolTip": "C:\\Users\\marty\\Documents\\C-Sharp practice\\General\\PalindromeChecker\\PalindromeChecker\\PalindromeChecker.cs*",
+              "RelativeToolTip": "PalindromeChecker\\PalindromeChecker.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T21:33:55.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\marty\\source\\repos\\PalindromeChecker\\PalindromeChecker\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\marty\\Documents\\C-Sharp practice\\General\\PalindromeChecker\\PalindromeChecker\\Program.cs",
               "RelativeDocumentMoniker": "PalindromeChecker\\Program.cs",
-              "ToolTip": "C:\\Users\\marty\\source\\repos\\PalindromeChecker\\PalindromeChecker\\Program.cs",
-              "RelativeToolTip": "PalindromeChecker\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\marty\\Documents\\C-Sharp practice\\General\\PalindromeChecker\\PalindromeChecker\\Program.cs*",
+              "RelativeToolTip": "PalindromeChecker\\Program.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-10T15:36:16.48Z",
               "EditorCaption": ""
