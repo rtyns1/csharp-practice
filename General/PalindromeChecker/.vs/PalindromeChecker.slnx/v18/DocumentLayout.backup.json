@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\marty\\source\\repos\\PalindromeChecker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{64AC59CB-E1AC-4BB7-B93B-B8D57865AAAC}|PalindromeChecker\\PalindromeChecker.csproj|c:\\users\\marty\\source\\repos\\palindromechecker\\palindromechecker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64AC59CB-E1AC-4BB7-B93B-B8D57865AAAC}|PalindromeChecker\\PalindromeChecker.csproj|solutionrelative:palindromechecker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F864046A-2B0A-9812-6E20-B4D846D2015E}|PalindromeChecker\\PalindromeChecker.csproj|c:\\users\\marty\\source\\repos\\palindromechecker\\palindromechecker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F864046A-2B0A-9812-6E20-B4D846D2015E}|PalindromeChecker\\PalindromeChecker.csproj|solutionrelative:palindromechecker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,7 +24,7 @@
               "RelativeDocumentMoniker": "PalindromeChecker\\Program.cs",
               "ToolTip": "C:\\Users\\marty\\source\\repos\\PalindromeChecker\\PalindromeChecker\\Program.cs",
               "RelativeToolTip": "PalindromeChecker\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-10T15:36:16.48Z",
               "EditorCaption": ""

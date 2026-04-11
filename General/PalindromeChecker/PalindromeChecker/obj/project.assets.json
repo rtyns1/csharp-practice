@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marty\\source\\repos\\PalindromeChecker\\PalindromeChecker\\PalindromeChecker.csproj",
+      "projectUniqueName": "C:\\Users\\marty\\Documents\\C-Sharp practice\\General\\PalindromeChecker\\PalindromeChecker\\PalindromeChecker.csproj",
       "projectName": "PalindromeChecker",
-      "projectPath": "C:\\Users\\marty\\source\\repos\\PalindromeChecker\\PalindromeChecker\\PalindromeChecker.csproj",
+      "projectPath": "C:\\Users\\marty\\Documents\\C-Sharp practice\\General\\PalindromeChecker\\PalindromeChecker\\PalindromeChecker.csproj",
       "packagesPath": "C:\\Users\\marty\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marty\\source\\repos\\PalindromeChecker\\PalindromeChecker\\obj\\",
+      "outputPath": "C:\\Users\\marty\\Documents\\C-Sharp practice\\General\\PalindromeChecker\\PalindromeChecker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
