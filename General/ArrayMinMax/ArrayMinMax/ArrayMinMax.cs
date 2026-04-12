@@ -67,8 +67,6 @@ namespace ArrayMinMax
             Console.WriteLine($"The maximum number is {max}");
             Console.WriteLine($"The minimum number is {min}");
 
-
-
         }
 
 
