@@ -57,6 +57,8 @@
  mergin=> combine user list + prayer times into one result
  display=> printthe merdged result to the console in a readable format.
 
+ ### Folder and file structure 
+
  okay, now the next thing to decide os how to structure the project.
  I have no idea how to structure this one,
  But i have seen a lot of structuring in sofware before, and i managed to see how a huge codebase is arranged when i was doing my 'internship'=>Barakallahu fiik Adam.
@@ -71,9 +73,119 @@
  i need a folder for helpers even if i wont use it immediate, and a filelogger.cs for error logging, i need a 
  i need an exponential backoff file RetryHnadler.cs
 
+ AsyncDataAggregator--Backend practice 1/
+│
+├── Program.cs
+│
+├── Models/
+│   ├── User.cs
+│   ├── PrayerTimingResponse.cs
+│   └── AggregatedData.cs
+│
+├── Services/
+│   ├── ApiService.cs           (makes HTTP calls, uses RetryHandler)
+│   └── RetryHandler.cs         (exponential backoff logic only)
+│
+├── Helpers/
+│   └── FileLogger.cs           (error logging to file)
+│
+├── docs/
+│   └── (your documentation files)
+│
+├── README.md
+├── LEARNING_LOG.md
+├── LEARNING_SUMMARY.md
+│
+└── error.log                   (created at runtime, gitignored)
+
+now, this structure is not my own, because i have no knowledge on the topic, i Hhad help coming up with this.
+But i do understand why we need each file, and all the code inside will be made by me, and there will be an explanation on each design choice, and any other thing.
+Accountability is the goal.
+
+program.cs==> orchestration only- calls services, displays results, no business logic
+user.cs==> data models for user data
+PrayerTimingResponse.cs==> define structure of Aladhan API resposnse(nested JSON
+AggregateData.cs==> defines final combines output structure with user data and prayer times
+APIService.cs==> makes HTTP requests using HttpClient.Knows WHAT to fetch, but not HOW to retry
+RetryHandler.cs==> contains retry logic with exponsential backoff. Knows How to retry but not WHAT to fetch
+FileLogger.cs==> appends timestamped messages to error.log. knows HOW to log but not WHAT to log
+Now, as you can see, you need to understand how these call each other because it can easily grow overwhelming.
 
 
- 
+Program.cs
+    │
+    ├── calls → ApiService.GetUsersAsync()
+    │               │
+    │               └── calls → RetryHandler.ExecuteWithRetryAsync()
+    │
+    └── calls → ApiService.GetPrayerTimesAsync()
+                    │
+                    └── calls → RetryHandler.ExecuteWithRetryAsync()
 
+When RetryHandler fails after all retries:
+    └── calls → FileLogger.LogError()
   
+  So yeah, now lets get to writing actual code
+  now, there will be always the problem of decidning the starting point of writing your prject,
+  even moresoe concidering i havent done anything like this before, so i have googled and i am rcommended to go with the following: i will simply compy paste the whole thing;:;
 
+ ### Do not write everything at once. Write in this order, testing each piece:
+
+Step 1: FileLogger.cs (no dependencies)
+Write LogError(string message) method
+
+Test it from Program.cs with a simple message
+
+Verify error.log appears
+
+Step 2: Models (plain C# classes)
+User.cs — match JSONPlaceholder response structure
+
+PrayerTimingResponse.cs — match Aladhan response structure (nested)
+
+AggregatedData.cs — what you will display
+
+Step 3: RetryHandler.cs (depends on nothing)
+Write ExecuteWithRetryAsync<T> method
+
+Test with a fake failing action to verify retry logic
+
+Step 4: ApiService.cs (depends on RetryHandler + Models)
+Write GetUsersAsync() — makes real HTTP call to JSONPlaceholder
+
+Write GetPrayerTimesAsync() — makes real HTTP call to Aladhan
+
+Both should use RetryHandler for retries
+
+Both should call FileLogger on failures
+
+Step 5: Program.cs (brings it all together)
+Create instance of ApiService
+
+Call both methods (parallel or sequential)
+
+Combine results into AggregatedData
+
+Display to console
+
+The very first line of code you write
+In Program.cs, write this:
+
+csharp
+using AsyncDataAggregator--Backend practice 1.Helpers;
+
+FileLogger.LogError("Testing logger - delete this later");
+Run it. Check if error.log appears.
+
+If yes → delete that test line and move to Step 2.
+
+Your action now
+Open Program.cs. Write the test line above. Run:
+
+bash
+dotnet run
+Then report back:
+
+Did error.log appear?
+
+What did it contain?
