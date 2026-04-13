@@ -255,3 +255,173 @@ I need to understand what an API is. Then understand what it is returning and ho
 
  user.cs is blueprint for one user, then we will have a list<User> in our code to represent the list of users we get form the API.
 
+ ## SERVICE LAYER
+ I have no idea how to do this part, ive never done anything, and i know there will be alot of reading, 
+ So, to make work short, i aksed AI to give me a list of things i would need to read on and understand in order to have an understanding of whatever is hapening and it gave me details, which willl be pasted below::
+ 
+<details>
+<summary>Click to expand: Research Notes - Service Layer</summary>
+
+[ Part 1: Func<T> Delegate (for RetryHandler)
+You need to understand:
+
+Concept	What you must know
+What a delegate is	A type that holds a reference to a method
+Func<T>	A delegate that returns a value of type T
+Func<Task<T>>	A delegate that returns a Task<T> (async method)
+Passing a method as a parameter	How to write a method that accepts another method as an argument
+Invoking a Func	How to call the method stored in the delegate (using () or Invoke())
+Async lambda expressions	async () => await Something()
+Search terms to use:
+
+"C# Func delegate tutorial"
+
+"C# pass async method as parameter Func Task"
+
+"C# delegate vs Func vs Action"
+
+Self-test questions:
+
+Can you write a method that accepts Func<int, string> and then calls it?
+
+Can you explain why RetryHandler needs Func<Task<T>> instead of just Func<T>?
+
+Part 2: HttpClient (for ApiService)
+You need to understand:
+
+Concept	What you must know
+Singleton pattern	What it means, why one HttpClient instance is reused
+Static readonly field	How to declare and initialize HttpClient once
+GetAsync method	How to send a GET request and get an HttpResponseMessage
+GetStringAsync method	Simpler alternative — returns raw JSON string
+HttpResponseMessage properties	IsSuccessStatusCode, StatusCode, Content
+EnsureSuccessStatusCode()	What it does, when it throws
+TimeSpan and timeout	How to set HttpClient.Timeout
+Default request headers	How to add headers like Accept or User-Agent
+Disposing HttpClient	Why you should NOT dispose a singleton
+Search terms to use:
+
+"HttpClient singleton best practices .NET"
+
+"HttpClient GetAsync example C#"
+
+"HttpClient GetStringAsync vs GetAsync"
+
+"C# HttpClient Timeout"
+
+"Why HttpClient should be static"
+
+Self-test questions:
+
+What happens if you create a new HttpClient for every request?
+
+How do you handle a 404 response without crashing?
+
+Where in your code will you declare and initialize the singleton HttpClient?
+
+Part 3: CancellationToken (for timeout)
+You need to understand:
+
+Concept	What you must know
+CancellationTokenSource	Creates a token that can be cancelled
+CancellationToken	The token passed to async methods
+CancelAfter(int milliseconds)	Automatically cancels after a delay
+IsCancellationRequested	Property to check if cancellation was requested
+ThrowIfCancellationRequested()	Method that throws OperationCanceledException
+Passing token to HttpClient	Many HttpClient methods accept a CancellationToken
+Cooperative cancellation	Cancellation is not forced — your code must check for it
+Search terms to use:
+
+"C# CancellationTokenSource CancelAfter"
+
+"C# CancellationToken example"
+
+"CancellationToken with HttpClient"
+
+"C# cooperative cancellation pattern"
+
+Self-test questions:
+
+If you set CancelAfter(5000), what happens at exactly 5 seconds?
+
+Does cancellation immediately abort an HTTP request, or does it wait?
+
+How do you pass a cancellation token to HttpClient.GetStringAsync()?
+
+Part 4: JSON Deserialization with System.Text.Json (for converting API responses to models)
+You need to understand:
+
+Concept	What you must know
+JsonSerializer.Deserialize<T>()	Main method for converting JSON to objects
+Case sensitivity	By default, JSON field names must exactly match C# property names
+Matching your models	Your User class has lowercase properties (id, name) — JSON has the same
+Deserializing collections	JsonSerializer.Deserialize<List<User>>(json)
+Nested objects	How to deserialize data.timings.Fajr into nested classes
+Handling null values	What happens if a JSON field is missing
+JsonSerializerOptions	How to configure case-insensitive deserialization (optional)
+Search terms to use:
+
+"System.Text.Json deserialize object C#"
+
+"System.Text.Json deserialize list"
+
+"System.Text.Json nested objects"
+
+"System.Text.Json case sensitivity"
+
+Self-test questions:
+
+Given the JSON for a single user, how do you turn it into a User object?
+
+Given the JSON for all users (array), how do you turn it into List<User>?
+
+If your C# property is named UserName but JSON has user_name, will it match? How do you fix it?
+
+Part 5: Exponential Backoff Logic (for RetryHandler)
+You need to understand:
+
+Concept	What you must know
+Loop with max retries	for or while loop that runs up to N times
+Delay calculation	Math.Pow(2, retryCount) returns 2^n (2, 4, 8, 16...)
+Task.Delay	Asynchronous wait — does not block the thread
+Combining delays	Task.Delay(TimeSpan.FromSeconds(Math.Pow(2, retryCount)))
+Catching exceptions	Which exceptions should trigger a retry? (e.g., HttpRequestException)
+Giving up	After max retries, re-throw the exception to let caller know it failed
+Logging each retry	Call FileLogger before each retry attempt
+Search terms to use:
+
+"C# exponential backoff retry pattern"
+
+"Task.Delay milliseconds C#"
+
+"Math.Pow C# example"
+
+"C# retry loop with Polly vs manual" (just to understand pattern)
+
+Self-test questions:
+
+For retryCount = 0, 1, 2, what delays do you get from Math.Pow(2, retryCount)?
+
+What happens if the third retry also fails?
+
+Should you log before the first attempt, or only on retries?
+
+What to do now
+Step	Action
+1	Copy this list into your LEARNING_LOG.md or a separate RESEARCH.md file
+2	For each concept, search the exact terms provided
+3	Read at least 2-3 different sources per concept
+4	Write notes in your own words explaining each concept
+5	Answer the self-test questions in writing
+6	Do not write any code yet
+When you have completed all 5 parts, come back and explain to me:
+
+What Func<Task<T>> means in your own words
+
+How you will structure your exponential backoff loop
+
+Where the CancellationToken will be created and where it will be passed
+''']
+
+</details>
+
