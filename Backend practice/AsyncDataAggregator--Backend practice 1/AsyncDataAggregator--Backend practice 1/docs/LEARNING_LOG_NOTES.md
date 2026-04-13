@@ -189,3 +189,28 @@ Then report back:
 Did error.log appear?
 
 What did it contain?
+
+### FILELOGGER.cs
+
+This class will be responsible for logging errors to a file.
+So essentially waht it does is that it has a method that takes a string message and appends it to a file called error.log with timestamp
+ Now, the first question i had is why does it need to be a static class( i got a  hint that it should eb a static method, and copied a soimple code fomr someone in reddit)
+ **Short notes on static classes and methods**
+
+ -A static class is a class that cannot be instantiated and can only contain static members.
+ - When you write a static class, you expect to call its methods directly, without creating an object. Usually for helper and utility functions that dont require any state to be maintained btwn calls.
+ 
+ **IF a class has no state(no fields that change per instance), it can be static.
+
+ static classes do produce an output, FileLogger outputs to a file. Console.WriteLine() is a static method that outputs to the console.
+
+ Static vs non static is about whether you need multiple instances of the class with different stats.
+ States in this case mean data that is stored in fields and can change per instance, for example, if you had a class that represented a user session, you woud want it to be non static because each user would have different
+ session data, But for a logger, you dont need multiple istances of the logger , you just need one set of methods that can be called from anywhere, so it makes sense to make it static.
+
+ Now, how do we test this filelogger? 
+ - using it in program.cs . I have no idea how to do this so i will google.
+ - 
+  **13 - 04 - 2026,Monday 9AM login**
+ 
+ Left it of at testin the filelogger.

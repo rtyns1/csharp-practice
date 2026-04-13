@@ -6,14 +6,14 @@ namespace AsyncDataAggregator__Backend_practice_1.Helpers
 {
     public static class FileLogger
     {
-        private static readonly string LogFilePath = "error.log";
+        private static readonly string LogFilePath = "error.log"; // this is a field declaration,
 
-        public static void LogError(string message)
+        public static async Task LogErrorAsync(string message)
         {
             try
             {
                 string LogLine = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - ERROR: {message}";
-                File.AppendAllText(LogFilePath, LogLine + Environment.NewLine);
+                await File.AppendAllTextAsync(LogFilePath, LogLine + Environment.NewLine);
             }
             catch
             {
