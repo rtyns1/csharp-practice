@@ -1,6 +1,6 @@
 **12 - 04 - 2026, Sunday 1600 hours login**
 
-## BASIC DETAILS
+### BASIC DETAILS
  -**Project Name**: AsyncDataAggregator
 
  **Project Description**: A console app that fetches user data and prayer tmes form two different websites at the same time,
@@ -129,7 +129,7 @@ When RetryHandler fails after all retries:
   now, there will be always the problem of decidning the starting point of writing your prject,
   even moresoe concidering i havent done anything like this before, so i have googled and i am rcommended to go with the following: i will simply compy paste the whole thing;:;
 
- ### Do not write everything at once. Write in this order, testing each piece:
+ ## Do not write everything at once. Write in this order, testing each piece:
 
 Step 1: FileLogger.cs (no dependencies)
 Write LogError(string message) method
@@ -190,7 +190,7 @@ Did error.log appear?
 
 What did it contain?
 
-### FILELOGGER.cs
+## FILELOGGER.cs
 
 This class will be responsible for logging errors to a file.
 So essentially waht it does is that it has a method that takes a string message and appends it to a file called error.log with timestamp
@@ -214,3 +214,44 @@ So essentially waht it does is that it has a method that takes a string message 
   **13 - 04 - 2026,Monday 9AM login**
  
  Left it of at testin the filelogger.
+ So, first i have to ensure that a majortiy of the methods is in Async in this project since that is the basis of the whole thing.
+ Now, i cant explain the code here, this will only be a spot for general explanationa and showing what ive learnt,if u need to see the actual code go to the codefile.
+ There i would have comments explaining the deeper stuff, this is a reflection notes space.
+
+ When you go to the code file, you will see the notes in the code itself, here its general.
+
+ ## MODELS 
+
+ Step 2: Models (plain C# classes)
+User.cs — match JSONPlaceholder response structure
+
+PrayerTimingResponse.cs — match Aladhan response structure (nested)
+
+AggregatedData.cs — what you will display
+I need to understand what an API is. Then understand what it is returning and how we will display it. Then i can create the models that will represent the datain my code.
+ **What is an API?**
+ An API, or Application Programming Interface, is a set of rules and protocols that allows different software applications to communicate with each other. It defines how requests should be made, how data should be formatted, and what responses can be expected. APIs are used to enable the integration of different systems and allow them to work together.
+ In our case, we will be using two APIs:
+ - JSONPlaceholder: A fake online REST API for testing and prototyping. It provides endpoints for users, posts, comments, etc.
+ - Aladhan: An API that provides prayer times based on location and date.
+ We will need to understand the structure of the data returned by these APIs in order to create our models. The models will be C# classes that represent the data we receive from the APIs, making it easier to work with that data in our code
+
+ Jsonplaceholde returns a list of users, each user has an id, name , username, email, address, phone, website and company, So our User.cs model will have properties that match these fields .
+ We will use the fields that are relevant to our project. We will use only name, email, id and username , we will ignore the rest.
+ https://jsonplaceholder.typicode.com/users
+
+ The Aladhan API returns a nested JSON response that contains prayer times for a specific location and date. The structure of the response is more complex, so we will need to create a model that can represent this nested strucutre.
+ Nested structure means that the JSON response contains objects within objects, an example would be like { "code": 200, "status":"ok", "data": { "timings": {"Fajr" : "05:00"....}}}
+ You can see that the " data" field contains has another object inside it called "timings" which contains the actual prayer times. So we will need to create a model that can represent this nested structure. It is already defined.
+ http://api.aladhan.com/v1/timingsByCity?city=Nairobi&country=Kenya&method=2
+
+ so:: User.cs==> represents ONE user from the JSON placeholder response
+      PrayerTimingResponse.cs==> represents the ENTIRE Aladhan response, which contains timings inside it
+      AgregateData.cs==> repesents the FINAL combines data you will display.
+
+ for user.cs-- we will take id, Name, username and email
+ for PrayerTimingResponse.cs-- we will take code, status, data.timings
+ for AggregateData.cs-- we will take a list of users and the prayer timings, this is what we will display to the user at the end.
+
+ user.cs is blueprint for one user, then we will have a list<User> in our code to represent the list of users we get form the API.
+
