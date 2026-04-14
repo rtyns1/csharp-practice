@@ -425,3 +425,52 @@ Where the CancellationToken will be created and where it will be passed
 
 </details>
 
+I failed to make notes for this part, but i will, if not here i will do in the learning summery.md file, fo rnow i need to finish this challenge.
+
+** 14 04 - 2026, Tuesday, 1:01Am **
+--- STEP 4.1 -Set up the HttpClient Singleton
+
+in my ApiService.cs class, i will need one HttpClient instance shared across all methods. 
+
+i will need a private readonly HttpClient _httpClient,
+initialise it where i declare it as - new HttpClient()
+optionally set a timeout and default headers, \remember this s a field do not, DONOT put it inside a method
+
+But whats the point of explaining the technical terms if i cant even explain what APiservice.cs does? 
+
+imagine you are a manager, and you have 2 employees:
+ 1. RetryHandler--> keeos trying a task until it works, or gives up after 3 tries.
+ 2. FilLogger --> Writes down roblems in a notebook with timestamps
+
+Now, ApiSercise is the manager who uses these employees to get real data from the internet.
+There are 2 specific jons that ApiService does::: They are methids;
+--GetUserAsync() :: Goes to JSONPlaceholder website, asks for th list of users, and returns it as C# objects (List<User>)
+--GetPrayerTimesAsync():: Goes to Aladhan website, asks for today's prayer times in Nairobi, and returns just the timings.
+
+Now, these methods do their work in a specific manner, aswould be exoected, but it s also vital to understand waht they do in english terms.
+That is huge part of programming, bridging the simple explanation with the complex, dee, technical explanations. 
+If the project is yours, you should be able to do both.
+
+Soo,, **GetUsersAsync():
+--Telll RetryHandler to please fetch user, If it fails, retry up to 3 times with exponential backoff(ive done this before)
+--RetryHandler calls HttpClient.GetStringAsync() , the actual internet request.
+-- If succesful, th JSON string comes back.
+-- Convert/deserialize that json string into a List<User> object
+-- Return that list to whoever callled GetUsersAsunc() (program.cs comes to mind)
+-- If any step fails, RetryHandler looga the error via Flielogger and retries.
+
+For GetPrayerTimesAsync():
+--Same flow but;
+--Different URL
+--Different deserialization(nested JSON)
+
+okay, took quite a long time awa but lets get this done.
+ApiService is the bridge between your program and the internet — it fetches data from specific APIs, converts it into C# objects, and uses RetryHandler and FileLogger to do so reliably.
+okay,now to write some of the code.
+
+
+HttpClient singleton ---> means only one instance exists for the entire program.
+there are exactly 2 methods in ApiService::
+-- GetUserAsync() which will return Task<List<User>>>
+-- GetPrayerTimesAsync() which will return Task<Timings>
+

@@ -14,7 +14,7 @@ namespace AsyncDataAggregator__Backend_practice_1.Helpers
 
         public static async Task LogErrorAsync(string message)// again, static means its called by the clsss itself, not on an instance
         {
-            try
+            try 
             {
                 string LogLine = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - ERROR: {message}";
                 await File.AppendAllTextAsync(LogFilePath, LogLine + Environment.NewLine);// this is a file I/O operation , but i will ive a brief explanation, the rest can be found in the docs
