@@ -35,7 +35,14 @@ namespace AsyncDataAggregator__Backend_practice_1.Services
 
                 try
                 {
-                    return JsonSerializer.Deserialize<List<User>>(json);
+                    var users = JsonSerializer.Deserialize<List<User>>(json);
+                    if (users == null)
+                    {
+                        await FileLogger.LogErrorAsync("Deserialization returned null for users.");
+                        throw new JsonException("Deserialized users is null.");
+                    }
+
+                    return users;
                 }
                 catch (JsonException ex)
                 {
@@ -57,7 +64,27 @@ namespace AsyncDataAggregator__Backend_practice_1.Services
                 try
                 {
                     var response = JsonSerializer.Deserialize<PrayerTimingResponse>(json);
-                    return response.data.timings;
+                    if (response == null)
+                    {
+                        await FileLogger.LogErrorAsync("Deserialization returned null for prayer timing response.");
+                        throw new JsonException("Deserialized prayer timing response is null.");
+                    }
+
+                    var data = response.data;
+                    if (data == null)
+                    {
+                        await FileLogger.LogErrorAsync("Deserialized prayer timing response has null data.");
+                        throw new JsonException("Deserialized prayer timing data is null.");
+                    }
+
+                    var timing = data.timings;
+                    if (timing == null)
+                    {
+                        await FileLogger.LogErrorAsync("Deserialized prayer timing response has null timing.");
+                        throw new JsonException("Deserialized prayer timing is null.");
+                    }
+
+                    return timing;
                 }
                 catch (JsonException ex)
                 {

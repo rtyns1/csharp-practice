@@ -474,3 +474,20 @@ there are exactly 2 methods in ApiService::
 -- GetUserAsync() which will return Task<List<User>>>
 -- GetPrayerTimesAsync() which will return Task<Timings>
 
+*** Next thing to do is to debug, and to record exactly how everything works and why it works in the README nd the LEARNING LOG 
+
+**19th - April - 2026 --Sunday, been a while, been finishing up something over at python**
+So, last time i left there were a few bugs that i "fixed", and now, there is a problem with the APIs.
+I NEED TO LEARN HOW TO WRITE UNMESSY DOCUMENTATION.
+2026-04-19 01:21:05 - ERROR: Deserialization failed for prayer times: Deserialized prayer timing is null.
+2026-04-19 01:21:22 - ERROR: Deserialized prayer timing response has null timing.
+2026-04-19 01:21:22 - ERROR: Deserialization failed for prayer times: Deserialized prayer timing is null.
+2026-04-19 01:21:22 - ERROR: Program execution failed: Operation failed after 5
+
+-You can see the errors.
+-Now, idk where to start in debugging.
+
+* I SUCCESFULLY DEBUGGED ON MY OWN, I MIGHT BE HIMMMM.
+* So, the problem was::
+"The bug was a typo: 'timing' instead of 'timings' in my model class. I found it by printing the raw JSON response from 
+the API and comparing it to my C# properties. I changed the property name from 'timing' to 'timings' to match the JSON field."

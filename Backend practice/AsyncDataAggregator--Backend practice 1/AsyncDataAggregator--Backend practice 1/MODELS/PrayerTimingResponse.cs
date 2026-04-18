@@ -15,7 +15,7 @@ namespace AsyncDataAggregator__Backend_practice_1.Models
     }
     public class Data
     {
-        public Timings? timing { get; set; }
+        public Timings? timings { get; set; }
     }
 
     public class Timings
